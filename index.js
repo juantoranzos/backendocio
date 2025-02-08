@@ -3,6 +3,7 @@ import cors from 'cors'
 import morgan from 'morgan'
 import * as dotenv from 'dotenv'
 import './src/database/dbConnection'
+import productosRoutes from './src/routes/productos.routes'
 //crear un puerto
 // crear una instancia de express
 dotenv.config() //sirve para leer variables de entorno 
@@ -18,9 +19,6 @@ app.listen(app.get('port'), () => {
  app.use(express.urlencoded({extended: true})) // permite en el objeto request los strings y arrays
  app.use(morgan('dev')); //nos da info extra en la terminal
 //rutas
-app.use('/prueba', (req, res)=>{
-  res.send('esto es una prueba de una peticion get a mi backend');
-
-})
-
+//http://localhost:4000/apiocio/productos
+app.use("/apiocio", productosRoutes)
 
