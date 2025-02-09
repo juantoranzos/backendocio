@@ -30,18 +30,7 @@ export const crearProducto = async (req, res)=>{
     })
    }
 }
-//controlador para actualizar un producto
-// export const actualizarProducto = async (req, res) => {
-//     try {
-//         const productoActualizado = await Producto.findByIdAndUpdate(req.params.id, req.body, {new: true});
-//         res.status(200).json(productoActualizado);
-//     } catch (error) {
-//         console.log(error);
-//         res.status(404).json({
-//             mensaje: 'error al actualizar el producto'
-//         })
-//     }
-// }
+
 //controlador para borrar un producto
 export const borrarProducto = async (req, res) => {
     try {
@@ -56,6 +45,7 @@ export const borrarProducto = async (req, res) => {
         })
     }
 }
+//controlador para editar un producto
 export const editarProducto = async (req, res)=>{
 try {
    await Producto.findByIdAndUpdate(req.params.id, req.body);
@@ -70,4 +60,18 @@ try {
     })
     
 }
+}
+//constrolador para obtener un producto
+export const obtenerProducto = async (req, res) => {
+    try {
+        const producto = await Producto.findById(req.params.id);
+        res.status(200).json(producto);
+        
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: 'no se pudo obtener el producto buscado'
+        })
+    }
+
 }
