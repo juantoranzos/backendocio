@@ -17,13 +17,6 @@ export const obtenerProductos = async (req, res) => {
 //controlador para crear un producto en la base de datos
 export const crearProducto = async (req, res)=>{
    try {
-    //trabajar con el resultado de express validator
-    const error = validationResult(req);
-    if(!error.isEmpty()){
-        return res.status(400).json({
-            error: error.array()
-        })
-    }
     console.log(req.body);
     const nuevoProducto = new Producto(req.body);
     await nuevoProducto.save();
