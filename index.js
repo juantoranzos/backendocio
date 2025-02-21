@@ -5,6 +5,8 @@ import * as dotenv from 'dotenv'
 import './src/database/dbConnection'
 import productosRoutes from './src/routes/productos.routes'
 import usuarioRoutes from './src/routes/usuarios.routes'
+import path from 'path'
+
 //crear un puerto
 // crear una instancia de express
 dotenv.config() //sirve para leer variables de entorno 
@@ -19,6 +21,7 @@ app.listen(app.get('port'), () => {
  app.use(express.json()) //interpreta el formato json
  app.use(express.urlencoded({extended: true})) // permite en el objeto request los strings y arrays
  app.use(morgan('dev')); //nos da info extra en la terminal
+ app.use(express.static(path.join(__dirname, '/public')))
 //rutas
 //http://localhost:4000/apiocio/productos
 //http://localhost:4000/apiocio/auth
