@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import * as dotenv from 'dotenv'
 import './src/database/dbConnection'
 import productosRoutes from './src/routes/productos.routes'
+import usuarioRoutes from './src/routes/usuarios.routes'
 //crear un puerto
 // crear una instancia de express
 dotenv.config() //sirve para leer variables de entorno 
@@ -20,5 +21,6 @@ app.listen(app.get('port'), () => {
  app.use(morgan('dev')); //nos da info extra en la terminal
 //rutas
 //http://localhost:4000/apiocio/productos
-app.use("/apiocio", productosRoutes)
-
+//http://localhost:4000/apiocio/auth
+app.use("/apiocio", productosRoutes);
+app.use("/apiocio/auth", usuarioRoutes);
