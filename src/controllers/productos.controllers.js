@@ -1,4 +1,3 @@
-import { validationResult } from "express-validator";
 import Producto from "../models/producto";
 //controlador para obtener todos los productos
 export const obtenerProductos = async (req, res) => {
