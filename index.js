@@ -17,11 +17,15 @@ app.listen(app.get('port'), () => {
     console.log(`El servidor esta corriendo en el puerto ${app.get('port')}`);
 });
 //middlwares, funciones que ejecutan una tarea
- app.use(cors())//conexiones remotas
- app.use(express.json()) //interpreta el formato json
- app.use(express.urlencoded({extended: true})) // permite en el objeto request los strings y arrays
- app.use(morgan('dev')); //nos da info extra en la terminal
- app.use(express.static(path.join(__dirname, '/public')))
+app.use(cors({
+    origin: "https://famous-croquembouche-8c9fa9.netlify.app/", // Reemplaza con la URL de tu frontend en Netlify
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization"
+}))//conexiones remotas
+app.use(express.json()) //interpreta el formato json
+app.use(express.urlencoded({ extended: true })) // permite en el objeto request los strings y arrays
+app.use(morgan('dev')); //nos da info extra en la terminal
+app.use(express.static(path.join(__dirname, '/public')))
 //rutas
 //http://localhost:4000/apiocio/productos
 //http://localhost:4000/apiocio/auth
